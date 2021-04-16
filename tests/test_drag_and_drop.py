@@ -10,8 +10,8 @@ driver = open_browser(path="drag_and_drop")
 assert driver.find_element_by_css_selector('#column-a > header').text == 'A'
 assert driver.find_element_by_css_selector('#column-b > header').text == 'B'
 
-# Переходим в папку helpers
-os.chdir('../helpers')
+# Переходим в папку js_helpers
+os.chdir('../js_helpers')
 
 # Открываем скрипт для симуляции drad_and_drop
 time.sleep(2)

@@ -27,7 +27,7 @@ post_request = requests.post('https://petstore.swagger.io/v2/pet', json=body)
 get_response = requests.get(url='https://petstore.swagger.io/v2/pet/100')
 assert get_response.status_code == 200
 
-# Улаляем данные
+# Удаляем данные
 deL_response = requests.delete(url='https://petstore.swagger.io/v2/pet/100')
 assert deL_response.status_code == 200
 
