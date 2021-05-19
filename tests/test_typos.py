@@ -1,16 +1,13 @@
-from browser.browser_helper import open_browser
-import time
+import pytest
 
-# Заходим на страницу Typos
-driver = open_browser(path="typos")
 
-selector = '#content > div > p:nth-child(3)'
-typo = driver.find_element_by_css_selector(selector)
-
-while typo.text == "Sometimes you'll see a typo, other times you won,t.":
-    driver.refresh()
+@pytest.mark.parametrize('path', ["typos"])
+def test_typos(driver):
+    selector = '#content > div > p:nth-child(3)'
     typo = driver.find_element_by_css_selector(selector)
 
-assert typo.text == "Sometimes you'll see a typo, other times you won't."
+    while typo.text == "Sometimes you'll see a typo, other times you won,t.":
+        driver.refresh()
+        typo = driver.find_element_by_css_selector(selector)
 
-driver.quit()
+    assert typo.text == "Sometimes you'll see a typo, other times you won't."

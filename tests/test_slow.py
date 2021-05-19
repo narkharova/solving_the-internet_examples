@@ -1,12 +1,10 @@
 import time
-from browser.browser_helper import open_browser
+import pytest
 
-# Заходим на страницу Slow Resources
-driver = open_browser(path="slow")
-slow_request = []
 
-# Функция для получения запроса slow_external из network
-def get_request():
+def get_request(driver):
+    slow_request = []
+
     test = driver.execute_script(
         "var performance = window.performance || {}; var network = performance.getEntries() || {}; return network;")
 
@@ -16,15 +14,17 @@ def get_request():
 
     return slow_request
 
-# Смотрим есть ли запросы slow_request до истечения 30 секунд
-slow_request = get_request()
+@pytest.mark.parametrize('path', ["slow"])
+def test_slow(driver):
 
-assert len(slow_request) == 0
 
-# Смотрим есть ли запросы slow_request после истечения 30 секунд
-time.sleep(33)
-slow_request = get_request()
+    # Смотрим есть ли запросы slow_request до истечения 30 секунд
+    slow_request = get_request(driver)
 
-assert len(slow_request) == 1
+    assert len(slow_request) == 0
 
-driver.quit()
+    # Смотрим есть ли запросы slow_request после истечения 30 секунд
+    time.sleep(33)
+    slow_request = get_request(driver)
+
+    assert len(slow_request) == 1

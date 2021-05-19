@@ -1,30 +1,28 @@
-from browser.browser_helper import open_browser
 import os
 import time
+import pytest
 
-# Заходим на страницу File Uploader
-driver = open_browser(path="upload")
 
-# Нажимаем на Upload без файла
-button_upload = driver.find_element_by_css_selector('#file-submit').click()
-upload_error = driver.find_element_by_css_selector('h1')
-assert upload_error.text == "Internal Server Error"
-time.sleep(1)
+@pytest.mark.parametrize('path', ["upload"])
+def test_upload(driver):
+    # Нажимаем на Upload без файла
+    driver.find_element_by_css_selector('#file-submit').click()
+    upload_error = driver.find_element_by_css_selector('h1')
+    assert upload_error.text == "Internal Server Error"
+    time.sleep(1)
 
-driver.quit()
+    driver.quit()
 
-# Открываем повторно страницу и загружаем файл из папки
-driver = open_browser(path="upload")
+    # Открываем повторно страницу и загружаем файл из папки
+    driver.get("https://the-internet.herokuapp.com/upload")
 
-file_upload = driver.find_element_by_css_selector('#file-upload')
-os.chdir('..')
-file_upload.send_keys(os.getcwd()+'\\upload\\example')
+    file_upload = driver.find_element_by_css_selector('#file-upload')
+    os.chdir('..')
+    file_upload.send_keys(os.getcwd()+'\\upload\\example')
 
-button_upload = driver.find_element_by_css_selector('#file-submit').click()
+    driver.find_element_by_css_selector('#file-submit').click()
 
-# Сравниваем текст загруженного файла
-file_uploated = driver.find_element_by_css_selector('#uploaded-files')
-assert file_uploated.text == "example"
-time.sleep(1)
-
-driver.quit()
+    # Сравниваем текст загруженного файла
+    file_uploaded = driver.find_element_by_css_selector('#uploaded-files')
+    assert file_uploaded.text == "example"
+    time.sleep(1)
