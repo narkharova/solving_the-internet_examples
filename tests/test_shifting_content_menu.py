@@ -13,7 +13,7 @@ def test_shifting_content_menu(driver):
     # Переходим в папку images где лежит референс
     os.chdir('../images')
 
-    # Проверяю картинку при первом заходе на страницу
+    # Проверяем картинку при первом заходе на страницу
     driver.save_screenshot("candidate_menu.png")
 
     reference = Image.open("reference_menu.png").convert('RGB')
@@ -29,10 +29,10 @@ def test_shifting_content_menu(driver):
     assert is_the_same is True
 
 
-    # Делаю рефреш для сдвига картинки на -100 пикселей
+    # Делаем рефреш для сдвига картинки на -100 пикселей
     driver.refresh()
 
-    # Проверяю картинку при втором заходе на страницу с двигом в -100 пикселей
+    # Проверяем картинку при втором заходе на страницу с двигом в -100 пикселей
     driver.save_screenshot("candidate_menu_100.png")
 
     reference = Image.open("reference_menu_100.png").convert('RGB')

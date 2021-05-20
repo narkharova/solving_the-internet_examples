@@ -9,8 +9,7 @@ def test_shifting_content_image(driver):
     # Переходим в папку images где лежит референс
     os.chdir('../images')
 
-    # Сделаю референс (только один раз)
-    # driver.save_screenshot(название референса)
+    # Сделаю референс (только один раз) driver.save_screenshot('reference_shifting_image.png') (название референса)
 
     # Проверяю картинку при первом заходе на страницу
     driver.save_screenshot("candidate_image.png")
@@ -30,6 +29,8 @@ def test_shifting_content_image(driver):
 
     # Делаем рефреш для сдвига картинки на -500 пикселей
     driver.refresh()
+
+    # Создаём референс driver.save_screenshot("reference_shifting_image_500.png")
 
     # Проверяем картинку при втором заходе на страницу с двигом в -500 пикселей
     driver.save_screenshot("candidate_image.png")

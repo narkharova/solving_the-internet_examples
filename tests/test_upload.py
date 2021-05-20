@@ -11,8 +11,6 @@ def test_upload(driver):
     assert upload_error.text == "Internal Server Error"
     time.sleep(1)
 
-    driver.quit()
-
     # Открываем повторно страницу и загружаем файл из папки
     driver.get("https://the-internet.herokuapp.com/upload")
 
