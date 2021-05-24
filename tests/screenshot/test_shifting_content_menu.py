@@ -11,7 +11,7 @@ def make_new_reference(driver):
 @pytest.mark.parametrize('path', ["shifting_content/menu?pixel_shift=100"])
 def test_shifting_content_menu(driver):
     # Переходим в папку images где лежит референс
-    os.chdir('../images')
+    os.chdir('../../images')
 
     # Проверяем картинку при первом заходе на страницу
     driver.save_screenshot("candidate_menu.png")

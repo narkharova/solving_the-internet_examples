@@ -7,7 +7,7 @@ import pytest
 @pytest.mark.parametrize('path', ["shifting_content/image?pixel_shift=500"])
 def test_shifting_content_image(driver):
     # Переходим в папку images где лежит референс
-    os.chdir('../images')
+    os.chdir('../../images')
 
     # Сделаю референс (только один раз) driver.save_screenshot('reference_shifting_image.png') (название референса)
 
