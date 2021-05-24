@@ -2,4 +2,4 @@ selenium
 chromedriver-py==90.0.4430.24
 requests
 pytest
-PIL
+Pillow
