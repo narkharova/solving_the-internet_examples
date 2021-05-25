@@ -9,15 +9,14 @@
 
 # Содержание проекта
 UI Автотесты находятся в папке tests.
+
 Автотесты на API находятся в папке api_tests.
+
 Скриншот тесты в tests/screenshot.
-Пример автотеста с использованием js-скрипта: 
-```test_drag_and_drop.py.```
-Примеры автотестов со скачиванием файлов:
-```
-test_download_secure.py
-test_file_downloader.py
-```
+
+Пример автотеста с использованием js-скрипта: ```test_drag_and_drop.py.```
+
+Примеры автотестов со скачиванием файлов: ```test_download_secure.py, test_file_downloader.py```
 
 # Requirements
 Устанавливать из requirements.txt:
