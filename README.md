@@ -40,6 +40,8 @@ cd solving_the-internet_examples
 2. Создать и войти в виртуальное окружение.
 ```
 pipenv --python 3.9.5
+```
+```
 pipenv shell
 ```
 3. Установить модули из requirements.txt.
@@ -53,6 +55,8 @@ pytest tests
 5. Запустить один тест.
 ```
 pytest tests/test_login.py
+```
+```
 pytest api_tests/test_api_example.py::test_post_request
 ```
 
