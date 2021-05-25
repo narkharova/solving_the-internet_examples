@@ -67,7 +67,8 @@ pytest api_tests/test_api_example.py::test_post_request
 4. Убедиться, что pytest выбран как **Default test runner** в **Settings > Tools > Python Integrated Tools**.
 5. Запустить тесты через любую конфигурацию pytest.
 
-# Управление браузером выполняется через класс BrowserHelpers
+# Управление браузером
+Выполняется через класс BrowserHelpers
 ```
 class BrowserHelpers:
     def __init__(self):
@@ -84,5 +85,5 @@ class BrowserHelpers:
 
     def close_browser(self):
         if self.driver:
-```
             self.driver.quit()
+```
